@@ -1,9 +1,7 @@
-include /usr/local/etc/PcapPlusPlus.mk
-
 # All Target
 all:
-	clang++ $(PCAPPP_BUILD_FLAGS) $(PCAPPP_INCLUDES) -c -o main.o main.cpp
-	clang++ $(PCAPPP_LIBS_DIR) -static-libstdc++ -o PcapPlusPlusTestApp main.o $(PCAPPP_LIBS)
+	clang++ `pkgconf --cflags PcapPlusPlus`-c -o main.o main.cpp
+	clang++ -o PcapPlusPlusTestApp main.o `pkgconf --libs PcapPlusPlus`
 
 # Clean Target
 clean:
