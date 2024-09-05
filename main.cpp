@@ -144,14 +144,14 @@ int main(int argc, char* argv[])
 
 	// extract pcap live device by interface name or IP address
 	pcpp::PcapLiveDevice* dev = NULL;
-	pcpp::IPv4Address interfaceIP(interfaceNameOrIP);
-	if (interfaceIP.isValid())
+	try
 	{
+		pcpp::IPv4Address interfaceIP(interfaceNameOrIP);
 		dev = pcpp::PcapLiveDeviceList::getInstance().getPcapLiveDeviceByIp(interfaceIP);
 		if (dev == NULL)
 			EXIT_WITH_ERROR("Couldn't find interface by provided IP");
 	}
-	else
+	catch (...)
 	{
 		dev = pcpp::PcapLiveDeviceList::getInstance().getPcapLiveDeviceByName(interfaceNameOrIP);
 		if (dev == NULL)
