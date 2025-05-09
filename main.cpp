@@ -2,6 +2,7 @@
 #include "PcapPlusPlusVersion.h"
 #include "PcapLiveDeviceList.h"
 #include "PcapFileDevice.h"
+#include "Packet.h"
 #include "getopt.h"
 #include "SystemUtils.h"
 
